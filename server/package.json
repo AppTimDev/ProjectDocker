@@ -1,0 +1,30 @@
+{
+  "name": "projectnodeserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node server.js",
+    "pro": "cross-env NODE_ENV=production node server.js",
+    "dev": "cross-env NODE_ENV=development nodemon -L server.js",
+
+    "docker:build": "docker build -t nodejs_i .",
+    "docker:dev-not-map": "docker run -it --rm -p 3000:3000 --name nodejs_c nodejs_i",
+    "docker:dev": "docker run -it --rm -p 3000:3000 -v C:\\Projects\\ProjectDocker\\server:/node -v /node/node_modules --name nodejs_c nodejs_i",
+    "docker:run": "docker run -d -p 3000:3000 --name nodejs_c nodejs_i",
+
+    "docker:start": "docker start nodejs_c",
+    "docker:stop": "docker stop nodejs_c"
+
+  },
+  "author": "AppTimDev",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

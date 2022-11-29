@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  nodejs:
+    restart: always
+    container_name: nodejs_c
+    build: ./server
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./server:/node
+      - /node/node_modules
+
+  redis:
+    restart: always
+    container_name: redis_c
+    build: ./redis
+    # image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+
+  nginx:
+    restart: always
+    container_name: nginx_c
+    build: ./nginx
+    ports:
+    - '80:80'
+    extra_hosts:
+    - 'host.docker.internal:192.168.1.37'
+    depends_on:
+    - nodejs
