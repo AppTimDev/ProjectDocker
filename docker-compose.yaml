@@ -30,3 +30,27 @@ services:
     - 'host.docker.internal:192.168.1.37'
     depends_on:
     - nodejs
+
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.11.4-management
+    hostname: rabbitmq
+    container_name: rabbitmq_c
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=tim
+      - RABBITMQ_DEFAULT_PASS=abcd1234
+    # volumes:
+    #   - ./data:/var/lib/rabbitmq
+
+  mongo:
+    # restart: always
+    image: mongo
+    container_name: mongo_c
+    ports:
+      - "27017:27017"
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: tim
+    #   MONGO_INITDB_ROOT_PASSWORD: abcd1234
