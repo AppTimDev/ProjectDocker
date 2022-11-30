@@ -32,7 +32,7 @@ services:
     - nodejs
 
   rabbitmq:
-    restart: always
+    restart: unless-stopped
     image: rabbitmq:3.11.4-management
     hostname: rabbitmq
     container_name: rabbitmq_c
@@ -46,9 +46,10 @@ services:
     #   - ./data:/var/lib/rabbitmq
 
   mongo:
-    # restart: always
-    image: mongo
-    container_name: mongo_c
+    # restart: on-failure:3    
+    # image: mongo:4.4.6
+    image: mongo:6.0.3
+    container_name: mongodb_c
     ports:
       - "27017:27017"
     # environment:

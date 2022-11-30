@@ -9,6 +9,9 @@ Feature:
 
 ---
 
+## Docker version using
+docker -v  
+Docker version 20.10.21  
 
 ### Docker commands
 ```cmd
@@ -89,6 +92,8 @@ docker run -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=tim -e RABBIT
 ## mongo db
 ```cmd
 docker pull mongo
+docker run -d -p 27017:27017 --restart on-failure:3 --name mongodb_c6 2dd27bb6d3e6
+
 docker run -d -p 27017:27017 --name mongodb_c mongo
 
 docker run -it --rm -p 27017:27017
@@ -97,11 +102,22 @@ docker run -d -p 27017:27017 --restart always -v $PWD/data:/data/db --name mongo
 
 ### test mongo
 ```cmd
-docker exec -it mongodb_c bash
+mongosh
+mongosh --port 27017
+
+show dbs
 use pms
 db.user.insertOne({ name: 'tim' })
 db.user.find()
 ```
+
+docker old using mongo version
+MongoDB shell version v4.4.6
+MongoDB server version: 4.4.6
+
+mongo version
+Using MongoDB:          6.0.3
+Using Mongosh:          1.6.0
 
 ---
 
