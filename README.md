@@ -121,5 +121,31 @@ Using Mongosh:          1.6.0
 
 ---
 
+## network
+docker network ls  
+docker exec -it -u root fad sh  
+ping nodejs  
+
+---
+
+## log
+docker logs mongodb_c
+docker stats mongodb_c
+docker cp mongodb_c:src_path dest_path
+
+---
+
+```cmd
+%UserProfile%
+.wslconfig
+[wsl2]
+memory=2GB
+swap=2GB
+processors=2
+localhostForwarding=true
+```
+
+--
+
 ## nodemon
 nodemon -L server.js
