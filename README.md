@@ -51,6 +51,9 @@ docker-compose
 docker-compose ps
 docker-compose up -d
 docker-compose down
+
+docker-compose stop
+docker-compose logs
 ```
 
 ---
@@ -111,13 +114,13 @@ db.user.insertOne({ name: 'tim' })
 db.user.find()
 ```
 
-docker old using mongo version
-MongoDB shell version v4.4.6
-MongoDB server version: 4.4.6
+docker old using mongo version  
+MongoDB shell version v4.4.6  
+MongoDB server version: 4.4.6  
 
-mongo version
-Using MongoDB:          6.0.3
-Using Mongosh:          1.6.0
+mongo version  
+Using MongoDB:          6.0.3  
+Using Mongosh:          1.6.0  
 
 ---
 
@@ -129,9 +132,9 @@ ping nodejs
 ---
 
 ## log
-docker logs mongodb_c
-docker stats mongodb_c
-docker cp mongodb_c:src_path dest_path
+docker logs mongodb_c  
+docker stats mongodb_c  
+docker cp mongodb_c:src_path dest_path  
 
 ---
 
@@ -145,7 +148,37 @@ processors=2
 localhostForwarding=true
 ```
 
---
+wsl --shutdown
+
+---
 
 ## nodemon
 nodemon -L server.js
+
+---
+
+## Kali Linux
+
+```cmd
+docker search kalilinux
+docker pull kalilinux/kali-rolling
+```
+
+## using kali linux image to run the container, enter the bash environment of the container
+```cmd
+docker run -d -t --hostname kali --name kalilinux_c kalilinux/kali-rolling
+docker exec -it kalilinux_c bash
+docker exec -it -u root kalilinux_c bash
+docker exec -it -u root kalilinux_c passwd
+```
+
+```cmd
+apt update
+apt dist-upgrade
+apt autoremove
+apt clean
+apt-get update && apt-get dist-upgrade -y && apt autoremove
+```
+
+```cmd
+```
