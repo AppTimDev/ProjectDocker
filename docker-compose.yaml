@@ -19,6 +19,7 @@ services:
       - 6379:6379
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data:/data
 
   nginx:
     restart: always
@@ -27,7 +28,7 @@ services:
     ports:
     - '80:80'
     extra_hosts:
-    - 'host.docker.internal:192.168.1.37'
+    - 'host.docker.internal:192.168.1.249'
     depends_on:
     - nodejs
 
